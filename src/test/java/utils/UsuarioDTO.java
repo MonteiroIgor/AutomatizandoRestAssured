@@ -18,4 +18,15 @@ public class UsuarioDTO {
 
         return usuario;
     }
+
+    public JSONObject preencherRegistro(){
+
+        JSONObject registro = new JSONObject();
+
+        registro.put("email","eve.holt@reqres.in");
+        registro.put("password","pistol");
+
+        return registro;
+    }
+
 }

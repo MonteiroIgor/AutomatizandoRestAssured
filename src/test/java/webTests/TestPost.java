@@ -21,17 +21,30 @@ public class TestPost extends GenericsConfig {
                 .contentType(ContentType.JSON)
                 .body(usuario)
         .when()
-<<<<<<< Updated upstream
                 .post(path+"api/users")
         .then()
                 .assertThat()
                 .contentType(ContentType.JSON)
                 .statusCode(HttpStatus.SC_CREATED);
-=======
-                .post("");
->>>>>>> Stashed changes
 
+    }
 
+    @Test
+    public void devePreencherRegistroUsuario(){
+
+        JSONObject registro = new UsuarioDTO().preencherRegistro();
+
+        given()
+                //.contentType(ContentType.JSON)
+                .body(registro)
+        .when()
+                .post(path+"/api/register")
+        .then()
+                .assertThat()
+                //.contentType(ContentType.JSON)
+                .statusCode(HttpStatus.SC_OK)
+                .log()
+                .all();
 
     }
 }
