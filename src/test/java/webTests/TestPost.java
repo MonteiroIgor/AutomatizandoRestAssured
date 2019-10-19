@@ -1,21 +1,37 @@
 package webTests;
 
 import config.GenericsConfig;
+import entidades.Registro;
+import entidades.Usuario;
 import io.restassured.http.ContentType;
 import jdk.nashorn.api.scripting.JSObject;
 import org.apache.http.HttpStatus;
 import org.json.JSONObject;
+import org.junit.Before;
 import org.junit.Test;
 import utils.UsuarioDTO;
 
+import javax.jws.WebService;
+
 import static io.restassured.RestAssured.given;
 
+
 public class TestPost extends GenericsConfig {
+
+    Usuario usuario;
+    Registro registro;
+
+    @Before
+    public void preenchimento(){
+        usuario = new UsuarioDTO().preencherUsuario();
+        registro = new UsuarioDTO().preencherRegistro();
+
+    }
 
     @Test
     public void deveCadastrarUsuarioComSucesso(){
 
-        JSONObject usuario = new UsuarioDTO().preencherUsuario();
+
 
         given()
                 .contentType(ContentType.JSON)
@@ -25,23 +41,25 @@ public class TestPost extends GenericsConfig {
         .then()
                 .assertThat()
                 .contentType(ContentType.JSON)
-                .statusCode(HttpStatus.SC_CREATED);
+                .statusCode(HttpStatus.SC_CREATED)
+                .log()
+                .all();
 
     }
 
     @Test
     public void devePreencherRegistroUsuario(){
 
-        JSONObject registro = new UsuarioDTO().preencherRegistro();
+
 
         given()
-                //.contentType(ContentType.JSON)
+                .contentType(ContentType.JSON)
                 .body(registro)
         .when()
-                .post(path+"/api/register")
+                .post(path+"api/register")
         .then()
                 .assertThat()
-                //.contentType(ContentType.JSON)
+                .contentType(ContentType.JSON)
                 .statusCode(HttpStatus.SC_OK)
                 .log()
                 .all();

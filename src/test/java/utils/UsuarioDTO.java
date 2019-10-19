@@ -1,30 +1,33 @@
 package utils;
 
+import entidades.Registro;
+import entidades.Usuario;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import javax.jws.WebService;
 import javax.xml.ws.ServiceMode;
 
-@ServiceMode
+
 public class UsuarioDTO {
 
 
-    public JSONObject preencherUsuario(){
+    public Usuario preencherUsuario(){
 
-        JSONObject usuario = new JSONObject();
+        Usuario usuario = new Usuario();
 
-        usuario.put("name","morpheus");
-        usuario.put("job","leader");
+        usuario.setName("morpheus");
+        usuario.setJob("leader");
 
         return usuario;
     }
 
-    public JSONObject preencherRegistro(){
+    public Registro preencherRegistro(){
 
-        JSONObject registro = new JSONObject();
+        Registro registro = new Registro();
 
-        registro.put("email","eve.holt@reqres.in");
-        registro.put("password","pistol");
+        registro.setEmail("eve.holt@reqres.in");
+        registro.setPassword("pistol");
 
         return registro;
     }
