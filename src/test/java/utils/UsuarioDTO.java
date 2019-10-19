@@ -32,4 +32,13 @@ public class UsuarioDTO {
         return registro;
     }
 
+    public Registro preencherRegistroSemPassword(){
+
+        Registro registro = new Registro();
+
+        registro.setEmail("eve.holt@reqres.in");
+
+        return registro;
+    }
+
 }
