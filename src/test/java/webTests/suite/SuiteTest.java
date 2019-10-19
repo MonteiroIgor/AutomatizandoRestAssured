@@ -5,6 +5,7 @@ import org.junit.runners.Suite;
 import webTests.TestDelete;
 import webTests.TestGet;
 import webTests.TestPost;
+import webTests.TestPut;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
@@ -12,6 +13,7 @@ import webTests.TestPost;
         TestGet.class,
         TestPost.class,
         TestDelete.class,
+        TestPut.class,
 
 
 })
