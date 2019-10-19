@@ -1,0 +1,42 @@
+package webTests;
+
+import config.GenericsConfig;
+import entidades.Usuario;
+import io.restassured.http.ContentType;
+import org.apache.http.HttpStatus;
+import org.junit.Before;
+import org.junit.Test;
+import utils.UsuarioDTO;
+import static org.hamcrest.Matchers.containsString;
+
+import static io.restassured.RestAssured.given;
+
+public class TestPut extends GenericsConfig {
+
+    Usuario atualizaUsuario;
+
+    @Before
+    public void preencherAtualizacao(){
+        atualizaUsuario = new UsuarioDTO().atualizarUsuario();
+    }
+
+    @Test
+    public void deveAtualizarInformacoesUsuario(){
+
+        Long idUsuario = Long.valueOf(2);
+
+        given()
+                .contentType(ContentType.JSON)
+                .body(atualizaUsuario)
+        .when()
+                .put(path+"api/users/"+idUsuario)
+        .then()
+                .assertThat()
+                .contentType(ContentType.JSON)
+                .statusCode(HttpStatus.SC_OK)
+                .body(containsString("morpheus"),
+                        containsString("zion resident"))
+                .log()
+                .all();
+    }
+}

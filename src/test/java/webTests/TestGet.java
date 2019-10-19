@@ -55,4 +55,18 @@ public class TestGet extends GenericsConfig {
                 .all();
 
     }
+
+    @Test
+    public void delayDeResposta(){
+
+        given()
+                .when()
+                .get(path+"api/users?delay=3")
+        .then()
+                .assertThat()
+                .statusCode(HttpStatus.SC_OK)
+                .log()
+                .all();
+
+    }
 }

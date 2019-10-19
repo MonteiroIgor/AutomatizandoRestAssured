@@ -22,6 +22,16 @@ public class UsuarioDTO {
         return usuario;
     }
 
+    public Usuario atualizarUsuario(){
+
+        Usuario usuario = new Usuario();
+
+        usuario.setName("morpheus");
+        usuario.setJob("zion resident");
+
+        return usuario;
+    }
+
     public Registro preencherRegistro(){
 
         Registro registro = new Registro();
@@ -31,6 +41,7 @@ public class UsuarioDTO {
 
         return registro;
     }
+
 
     public Registro preencherRegistroSemPassword(){
 
