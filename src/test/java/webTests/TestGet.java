@@ -1,10 +1,12 @@
 package webTests;
 
 import config.GenericsConfig;
+import io.restassured.module.jsv.JsonSchemaValidator;
 import org.apache.http.HttpStatus;
 import org.junit.Assert;
 import org.junit.Test;
 import static io.restassured.RestAssured.given;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.junit.Assert.assertEquals;
 
 public class TestGet extends GenericsConfig {
@@ -18,6 +20,7 @@ public class TestGet extends GenericsConfig {
         .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
+                .body(matchesJsonSchemaInClasspath("Schema/ListarUsuarioSchema.json"))
                 .log()
                 .all();
 
@@ -35,6 +38,7 @@ public class TestGet extends GenericsConfig {
         .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
+                .body(matchesJsonSchemaInClasspath("Schema/BuscarUsuarioPorIdSchema.json"))
                 .log()
                 .all();
 
@@ -65,6 +69,7 @@ public class TestGet extends GenericsConfig {
         .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
+                .body(matchesJsonSchemaInClasspath("Schema/DelayRespostaSchema.json"))
                 .log()
                 .all();
 

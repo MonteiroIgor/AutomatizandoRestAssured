@@ -3,10 +3,13 @@ package webTests;
 import config.GenericsConfig;
 import entidades.Usuario;
 import io.restassured.http.ContentType;
+import io.restassured.module.jsv.JsonSchemaValidator;
 import org.apache.http.HttpStatus;
 import org.junit.Before;
 import org.junit.Test;
 import utils.UsuarioDTO;
+
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.Matchers.containsString;
 
 import static io.restassured.RestAssured.given;
@@ -35,7 +38,8 @@ public class TestPut extends GenericsConfig {
                 .contentType(ContentType.JSON)
                 .statusCode(HttpStatus.SC_OK)
                 .body(containsString("morpheus"),
-                        containsString("zion resident"))
+                        containsString("zion resident"),
+                        matchesJsonSchemaInClasspath("Schema/AtualizaInformacaoSchema.json"))
                 .log()
                 .all();
     }
