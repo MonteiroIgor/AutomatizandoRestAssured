@@ -25,4 +25,6 @@ jobs:
     - name: Build with Maven
       run:
         mvn -Dtest=SuiteTest test
+    - name: Build Report
+      run:
         allure server target/surefire-reports
