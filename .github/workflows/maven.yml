@@ -23,4 +23,9 @@ jobs:
         distribution: 'adopt'
         cache: maven
     - name: Build with Maven
-      run: mvn -Dtest=SuiteTest test
+      run:
+        apt-add-repository ppa:qameta/allure
+        apt-get update
+        apt-get install allure
+        mvn -Dtest=SuiteTest test
+        allure serve target/surefire-reports
