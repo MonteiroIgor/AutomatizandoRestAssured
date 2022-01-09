@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 public class TestGet extends GenericsConfig {
 
     @Test
-    public void listarUsuarios(){
+    public void mustGetAllUser(){
 
         given()
         .when()
@@ -28,7 +28,7 @@ public class TestGet extends GenericsConfig {
     }
 
     @Test
-    public void deveBuscarUsuarioPorId(){
+    public void mustGetUserByID(){
 
         Long id = Long.valueOf(2);
 
@@ -45,7 +45,7 @@ public class TestGet extends GenericsConfig {
     }
 
     @Test
-    public void deveBuscarUsuarioPorIdInvalido(){
+    public void mustGetUsedByInvalidID(){
 
         Long idInvalido = Long.valueOf(300);
 
@@ -61,7 +61,7 @@ public class TestGet extends GenericsConfig {
     }
 
     @Test
-    public void delayDeResposta(){
+    public void mustVerifyDelayOfResponse(){
 
         given()
                 .when()

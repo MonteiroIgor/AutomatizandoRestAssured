@@ -10,7 +10,7 @@ import static io.restassured.RestAssured.given;
 public class TestDelete extends GenericsConfig {
 
     @Test
-    public void deletarUsuarioPorId(){
+    public void mustDeleteUserbyID(){
 
         Long id = Long.valueOf(2);
 

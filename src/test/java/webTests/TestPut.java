@@ -19,12 +19,12 @@ public class TestPut extends GenericsConfig {
     Usuario atualizaUsuario;
 
     @Before
-    public void preencherAtualizacao(){
+    public void fillAtualization(){
         atualizaUsuario = new UsuarioDTO().atualizarUsuario();
     }
 
     @Test
-    public void deveAtualizarInformacoesUsuario(){
+    public void mustUpdateUserInformation(){
 
         Long idUsuario = Long.valueOf(2);
 

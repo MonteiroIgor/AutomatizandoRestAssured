@@ -27,7 +27,7 @@ public class TestPost extends GenericsConfig {
     Registro registro,registroSemPassword;
 
     @Before
-    public void preenchimento(){
+    public void fill(){
         usuario = new UsuarioDTO().preencherUsuario();
         registro = new UsuarioDTO().preencherRegistro();
         registroSemPassword = new UsuarioDTO().preencherRegistroSemPassword();
@@ -35,7 +35,7 @@ public class TestPost extends GenericsConfig {
     }
 
     @Test
-    public void deveCadastrarUsuarioComSucesso(){
+    public void mustRegisterUserWithSucess(){
 
 
 
@@ -55,7 +55,7 @@ public class TestPost extends GenericsConfig {
     }
 
     @Test
-    public void devePreencherRegistroUsuario(){
+    public void mustFillUserRegister(){
 
 
 
@@ -75,7 +75,7 @@ public class TestPost extends GenericsConfig {
     }
 
     @Test
-    public void devePreencherRegistroSemPassword(){
+    public void mustFillRegisterWithoutPassword(){
 
         given()
                 .contentType(ContentType.JSON)
