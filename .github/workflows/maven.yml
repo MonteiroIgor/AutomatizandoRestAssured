@@ -12,7 +12,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: solutis/allure
 
     steps:
     - uses: actions/checkout@v2
@@ -24,8 +24,5 @@ jobs:
         cache: maven
     - name: Build with Maven
       run:
-        apt-add-repository ppa:qameta/allure
-        apt-get update
-        apt-get install allure
         mvn -Dtest=SuiteTest test
         allure serve target/surefire-reports
